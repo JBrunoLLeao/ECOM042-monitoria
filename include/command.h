@@ -4,12 +4,10 @@
 #include <stddef.h>
 
 
-typedef void (*command_fn_t)(void);
-
-struct command_entry {
-	const char *name;
-	command_fn_t execute;
-};
+typedef struct command_entry {
+        const char *name;
+        void (*execute)(void);
+} command_entry;
 
 /*
 Recebe uma tabela de comandos (array de struct command_entry), o

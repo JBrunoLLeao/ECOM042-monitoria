@@ -21,6 +21,6 @@ int main(void)
 	dispatch_command(commands_table, commands_table_size, "motor_off");
 	dispatch_command(commands_table, commands_table_size, "increase_speed");
 	dispatch_command(commands_table, commands_table_size, "decrease_speed");
-	dispatch_command(commands_table, commands_table_size, "teste_erro"); 
+	dispatch_command(commands_table, commands_table_size, "teste_erro");
 	return 0;
 }

@@ -29,10 +29,10 @@ static void cmd_decrease_speed(void)
 A tabela de comandos: mapeia nome -> função.
  */
 const struct command_entry commands_table[] = {
-	{ "motor_on",  cmd_motor_on  },
-	{ "motor_off", cmd_motor_off },
-	{ "increase_speed",  cmd_increase_speed },
-	{ "decrease_speed",  cmd_decrease_speed },
+	{"motor_on", cmd_motor_on},
+	{"motor_off", cmd_motor_off},
+	{"increase_speed", cmd_increase_speed},
+	{"decrease_speed", cmd_decrease_speed},
 };
 
 const size_t commands_table_size = sizeof(commands_table) / sizeof(commands_table[0]);

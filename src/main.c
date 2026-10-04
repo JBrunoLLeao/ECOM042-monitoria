@@ -1,7 +1,14 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 
-#include "io.h"
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/gpio/gpio_emul.h>
+
+#include "board_io.h"
+
+static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
+
+static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 
 int main(void)
 {
@@ -13,13 +20,13 @@ int main(void)
 	}
 
 	for (size_t i = 0; i < ARRAY_SIZE(sequence); i++) {
-		io_button_simulate(sequence[i]);
+		gpio_emul_input_set(button.port, button.pin, sequence[i]);
 
-		int button_state = io_button_read();
+		int button_state = button_read();
 
-		io_led_write(button_state);
+		led_set(button_state);
 
-		int led_state = io_led_read();
+		int led_state = gpio_emul_output_get(led.port, led.pin);
 
 		printk("Button: %d -> LED: %d\n", button_state, led_state);
 	}

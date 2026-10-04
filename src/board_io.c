@@ -1,13 +1,11 @@
+#include "board_io.h"
+
 #include <errno.h>
 
-#include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
-#include <zephyr/drivers/gpio/gpio_emul.h>
-#include <zephyr/kernel.h>
-
-#include "io.h"
 
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
+
 static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
 
 int io_init(void)
@@ -31,22 +29,12 @@ int io_init(void)
 	return 0;
 }
 
-int io_led_read(void)
+int led_set(bool on)
 {
-	return gpio_emul_output_get(led.port, led.pin);
+	return gpio_pin_set_dt(&led, on);
 }
 
-void io_button_simulate(int pressed)
-{
-	gpio_emul_input_set(button.port, button.pin, pressed);
-}
-
-int io_button_read(void)
+int button_read(void)
 {
 	return gpio_pin_get_dt(&button);
-}
-
-void io_led_write(int value)
-{
-	gpio_pin_set_dt(&led, value);
 }

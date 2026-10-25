@@ -1,7 +1,7 @@
-#include <string.h>
-#include <zephyr/ztest.h>
 #include "cmd.h"
 #include "line.h"
+#include <string.h>
+#include <zephyr/ztest.h>
 
 static bool led_state, btn_state;
 

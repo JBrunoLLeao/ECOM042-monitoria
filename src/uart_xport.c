@@ -1,7 +1,7 @@
-#include "uart_xport.h"
 #include "line.h"
-#include <zephyr/kernel.h>
+#include "uart_xport.h"
 #include <zephyr/drivers/uart.h>
+#include <zephyr/kernel.h>
 #include <zephyr/sys/ring_buffer.h>
 
 #define RESP_MAX 128

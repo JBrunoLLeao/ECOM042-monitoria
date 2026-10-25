@@ -1,7 +1,7 @@
-#include <zephyr/kernel.h>
-#include <zephyr/drivers/gpio.h>
 #include "cmd.h"
 #include "uart_xport.h"
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/kernel.h>
 
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_ALIAS(shell_led), gpios);
 static const struct gpio_dt_spec btn = GPIO_DT_SPEC_GET(DT_ALIAS(shell_btn), gpios);

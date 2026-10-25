@@ -1,0 +1,6 @@
+config MINISHELL_LINE_MAX
+	int "Tamanho maximo da linha de comando"
+	default 64
+	range 8 256
+
+source "Kconfig.zephyr"

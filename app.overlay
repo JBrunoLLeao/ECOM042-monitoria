@@ -1,0 +1,22 @@
+/ {
+	aliases {
+		shell-led = &shell_led;
+		shell-btn = &shell_btn;
+	};
+	leds {
+		compatible = "gpio-leds";
+		shell_led: led_0 {
+			gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
+		};
+	};
+	buttons {
+		compatible = "gpio-keys";
+		shell_btn: btn_0 {
+			gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+		};
+	};
+};
+
+&uart1 {
+	status = "okay";
+};

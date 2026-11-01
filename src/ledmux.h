@@ -7,7 +7,7 @@
 #define LEDMUX_MAX_LEDS 8
 
 /* passa isso no lugar do indice pra mexer em todos de uma vez */
-#define LEDMUX_ALL ((size_t)-1)
+#define LEDMUX_ALL ((size_t) - 1)
 
 enum ledmux_pattern {
 	LEDMUX_SLOW,

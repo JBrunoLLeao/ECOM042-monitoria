@@ -1,0 +1,14 @@
+config LEDMUX_SLOW_MS
+	int "Intervalo entre trocas de estado no padrao LENTO (ms)"
+	default 1000
+	range 10 60000
+
+config LEDMUX_NORMAL_MS
+	int "Intervalo entre trocas de estado no padrao NORMAL (ms)"
+	default 500
+	range 10 60000
+
+config LEDMUX_FAST_MS
+	int "Intervalo entre trocas de estado no padrao RAPIDO (ms)"
+	default 100
+	range 10 60000

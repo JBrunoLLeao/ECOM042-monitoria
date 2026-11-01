@@ -1,0 +1,41 @@
+/ {
+	aliases {
+		led0 = &t_led0;
+		led1 = &t_led1;
+		led2 = &t_led2;
+	};
+
+	/* controlador normal, ja fica pronto no boot */
+	emul_a: gpio_emul_a {
+		compatible = "zephyr,gpio-emul";
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <4>;
+		status = "okay";
+	};
+
+	/* esse so fica pronto quando o teste chamar device_init(),
+	 * serve pra testar a falha do init */
+	emul_b: gpio_emul_b {
+		compatible = "zephyr,gpio-emul";
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <4>;
+		zephyr,deferred-init;
+		status = "okay";
+	};
+
+	test_leds {
+		compatible = "gpio-leds";
+
+		t_led0: t_led0 {
+			gpios = <&emul_a 0 GPIO_ACTIVE_HIGH>;
+		};
+		t_led1: t_led1 {
+			gpios = <&emul_a 1 GPIO_ACTIVE_HIGH>;
+		};
+		t_led2: t_led2 {
+			gpios = <&emul_b 0 GPIO_ACTIVE_HIGH>;
+		};
+	};
+};
